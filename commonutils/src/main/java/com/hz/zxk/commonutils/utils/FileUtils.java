@@ -30,6 +30,21 @@ import java.io.IOException;
 public class FileUtils {
 
     /**
+     * 获取本程序cache文件夹路径
+     *
+     * @return
+     */
+    public static String getRootCachePath(Context context) {
+        File parent;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            parent = context.getExternalCacheDir();
+        } else {
+            parent = context.getCacheDir();
+        }
+        return parent.getAbsolutePath();
+    }
+
+    /**
      * 获取文件，如果找不到文件就创建。
      *
      * @param context
@@ -56,10 +71,11 @@ public class FileUtils {
 
     /**
      * 关闭文件
+     *
      * @param closeable
      */
-    public static void closeFile(Closeable closeable){
-        if(closeable!=null){
+    public static void closeFile(Closeable closeable) {
+        if (closeable != null) {
             try {
                 closeable.close();
             } catch (IOException e) {
@@ -70,9 +86,10 @@ public class FileUtils {
 
     /**
      * 关闭所有文件
+     *
      * @param closeables
      */
-    public static void closeFiles(Closeable... closeables){
+    public static void closeFiles(Closeable... closeables) {
         for (Closeable closeable : closeables) {
             closeFile(closeable);
         }
