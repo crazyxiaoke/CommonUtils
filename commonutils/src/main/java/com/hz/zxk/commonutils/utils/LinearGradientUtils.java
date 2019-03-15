@@ -36,6 +36,6 @@ public class LinearGradientUtils {
         int blue=(int)(blueStart+(blueEnd-blueStart)*radio+0.5);
         int green=(int)(greenStart+(greenEnd-greenStart)*radio+0.5);
 
-        return Color.argb(255,red,blue,green);
+        return Color.argb(255,red,green,blue);
     }
 }
